@@ -10,7 +10,7 @@ export default class createRide extends Component {
       description: "",
       difficulty: "",
       terraintype: "",
-      lengthinkm: 0,
+      lengthinkm: "",
       createdby: this.props.user,
     };
   }
@@ -18,10 +18,15 @@ export default class createRide extends Component {
   handleInputChange(event) {
     const value = event.target.value;
     const name = event.target.name;
-
     this.setState({
       [name]: value,
     });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    //pass state to parent func addNewRide
+    this.props.addNewRide(this.state);
   }
 
   render() {
@@ -86,7 +91,7 @@ export default class createRide extends Component {
             value={difficulty}
             onChange={(e) => this.handleInputChange(e)}
           ></input>
-          <button>Add</button>
+          <button onClick={(event) => this.handleSubmit(event)}>Add</button>
         </form>
       </div>
     );

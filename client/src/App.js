@@ -15,9 +15,28 @@ class App extends React.Component {
   }
 
   addNewRide = async (newRide) => {
+    console.log("adding new ride");
+    console.log(JSON.stringify(newRide));
     //send ride to db
     //get new list of rides
     //update state of rides
+
+    try {
+      const result = await fetch("/api/rides", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newRide),
+      });
+      // this.clearInputField(); // clears the input field after submitting
+      const rides = await result.json();
+      this.setState({
+        rides: rides,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   componentDidMount = async () => {
