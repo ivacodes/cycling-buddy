@@ -15,17 +15,15 @@ export default class MyRides extends Component {
     });
   }
 
-  deleteButtonPressed(e) {
+  async deleteButtonPressed(e) {
     const { myRideDetails } = this.state;
     const { usersRides } = this.props;
     e.preventDefault();
-    this.props.userDeleted(myRideDetails);
-    //if all rides are deleted, empty myRideDetails as well
-    if (!usersRides) {
-      this.setState({
-        myRideDetails: null,
-      });
-    }
+    await this.props.userDeleted(myRideDetails);
+    //when ride is deleted, empty myRideDetails as well
+    this.setState({
+      myRideDetails: null,
+    });
   }
 
   render() {
