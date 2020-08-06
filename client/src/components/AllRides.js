@@ -39,10 +39,12 @@ export default class AllRides extends Component {
     this.setState({
       joined: 1,
     });
+    // after joining, refresh usersrides list
+    this.props.refreshUsersRides();
   }
 
   render() {
-    const { rides } = this.props;
+    const { rides, usersRides } = this.props;
     const { sRide, joined } = this.state;
     return (
       <div>
@@ -100,9 +102,14 @@ export default class AllRides extends Component {
                     {sRide.terraintype}
                   </div>
                   <div>
-                    <button onClick={(e) => this.joinRide(e, sRide.id)}>
-                      Join
-                    </button>
+                    {usersRides.filter((e) => e.ride_id === sRide.id).length >
+                    0 ? (
+                      <button disabled>Joined</button>
+                    ) : (
+                      <button onClick={(e) => this.joinRide(e, sRide.id)}>
+                        Join
+                      </button>
+                    )}
                   </div>
                 </div>
               ) : (

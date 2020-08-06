@@ -97,6 +97,23 @@ class App extends React.Component {
     }
   };
 
+  refreshUsersRides = async () => {
+    try {
+      const resU = await fetch(`/api/usersrides/${this.state.user}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const usersRides = await resU.json();
+      this.setState({
+        usersRides: usersRides,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   componentDidMount = async () => {
     // populate rides state
     try {
@@ -117,6 +134,7 @@ class App extends React.Component {
         },
       });
       const usersRides = await resU.json();
+
       this.setState({
         usersRides: usersRides,
       });
@@ -136,12 +154,17 @@ class App extends React.Component {
             usersRides={usersRides}
             userDeleted={(ride) => this.userDeleted(ride)}
           />
-          {/* <CreateRide
+          <CreateRide
             user={user}
             rides={rides}
             addNewRide={(newRide) => this.addNewRide(newRide)}
           />
-          <AllRides user={user} rides={rides} /> */}
+          <AllRides
+            user={user}
+            rides={rides}
+            usersRides={usersRides}
+            refreshUsersRides={this.refreshUsersRides}
+          />
         </div>
       </div>
     );
