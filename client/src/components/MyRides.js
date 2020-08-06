@@ -9,10 +9,23 @@ export default class MyRides extends Component {
   }
 
   onSelectRide(ride) {
-    console.log(ride.id);
+    console.log(ride.ride_id);
     this.setState({
       myRideDetails: ride,
     });
+  }
+
+  deleteButtonPressed(e) {
+    const { myRideDetails } = this.state;
+    const { usersRides } = this.props;
+    e.preventDefault();
+    this.props.userDeleted(myRideDetails);
+    //if all rides are deleted, empty myRideDetails as well
+    if (!usersRides) {
+      this.setState({
+        myRideDetails: null,
+      });
+    }
   }
 
   render() {
@@ -25,7 +38,7 @@ export default class MyRides extends Component {
           {usersRides.map((ride) => {
             return (
               <div
-                key={ride.id}
+                key={ride.ride_id}
                 onClick={() => {
                   this.onSelectRide(ride);
                 }}
@@ -65,6 +78,13 @@ export default class MyRides extends Component {
                 <span>Terrain type: </span>
                 {myRideDetails.terraintype}
               </div>
+              <button
+                onClick={(e) => {
+                  this.deleteButtonPressed(e);
+                }}
+              >
+                Remove
+              </button>
             </div>
           ) : (
             <div></div>

@@ -60,7 +60,7 @@ router.get("/usersrides/:user_id", userExistsParams, async (req, res) => {
   const { user_id } = req.params;
   try {
     const results = await db(
-      `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
+      `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id, createdby from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
     );
     res.send(results.data);
   } catch (err) {
@@ -81,20 +81,31 @@ router.post("/usersrides", rideExists, userExists, async (req, res) => {
   }
 });
 
-/*remove from rides when user is creator, get updated list back*/
+/*remove from rides (iscompleted=1) when user is creator, get updated list back*/
 router.put("/rides", rideExists, userExists, async (req, res) => {
   const { user_id, ride_id } = req.body;
   try {
-    await db;
-  } catch (err) {}
+    await db(
+      `update rides set iscompleted=1 where id=${ride_id} and createdby=${user_id}`
+    );
+    const results = await db(
+      `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
+    );
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 /*remove from usersrides when user is not creator, get updated list back*/
 router.delete("/usersrides", rideExists, userExists, async (req, res) => {
   const { user_id, ride_id } = req.body;
   try {
-    const results = await db(
+    await db(
       `delete from users_rides where user_id=${user_id} and ride_id=${ride_id};`
+    );
+    const results = await db(
+      `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
     );
     res.send(results.data);
   } catch (err) {
