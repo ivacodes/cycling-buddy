@@ -11,6 +11,7 @@ class App extends React.Component {
       //currently "logged in" user
       user: 1,
       rides: [],
+      usersRides: [],
     };
   }
 
@@ -40,6 +41,7 @@ class App extends React.Component {
   };
 
   componentDidMount = async () => {
+    // populate rides state
     try {
       const res = await fetch("/api/rides");
       const rides = await res.json();
@@ -50,21 +52,37 @@ class App extends React.Component {
       // upon failure, show error message
       console.log(err);
     }
+    //populate user rides state
+
+    try {
+      const resU = await fetch(`/api/usersrides/${this.state.user}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const usersRides = await resU.json();
+      this.setState({
+        usersRides: usersRides,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   render() {
-    const { user, rides } = this.state;
+    const { user, rides, usersRides } = this.state;
     return (
       <div className="App">
         Main app
         <div>
-          {/* <MyRides user={user} rides={rides} /> */}
-          <CreateRide
+          <MyRides user={user} usersRides={usersRides} />
+          {/* <CreateRide
             user={user}
             rides={rides}
             addNewRide={(newRide) => this.addNewRide(newRide)}
           />
-          {/* <AllRides user={user} rides={rides} /> */}
+          <AllRides user={user} rides={rides} /> */}
         </div>
       </div>
     );

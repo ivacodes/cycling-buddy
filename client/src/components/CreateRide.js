@@ -28,6 +28,11 @@ export default class createRide extends Component {
     //pass state to parent func addNewRide
     this.props.addNewRide(this.state);
   }
+  getCurrentTime() {
+    let t = new Date();
+    console.log(t);
+    return t;
+  }
 
   render() {
     const {
@@ -42,13 +47,14 @@ export default class createRide extends Component {
     return (
       <div>
         CREATE RIDE
-        <form>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
           Title
           <input
             type="text"
             name="title"
             value={title}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></input>
           Starting date and time
           <input
@@ -56,6 +62,7 @@ export default class createRide extends Component {
             name="startdate"
             value={startdate}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></input>
           Start address{" "}
           <input
@@ -63,12 +70,14 @@ export default class createRide extends Component {
             name="startpoint"
             value={startpoint}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></input>
           Description
           <textarea
             name="description"
             value={description}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></textarea>
           Terrain type
           <input
@@ -76,13 +85,15 @@ export default class createRide extends Component {
             name="terraintype"
             value={terraintype}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></input>
-          Length
+          Length (km)
           <input
             type="number"
             name="lengthinkm"
             value={lengthinkm}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></input>
           Difficulty
           <input
@@ -90,8 +101,9 @@ export default class createRide extends Component {
             name="difficulty"
             value={difficulty}
             onChange={(e) => this.handleInputChange(e)}
+            required
           ></input>
-          <button onClick={(event) => this.handleSubmit(event)}>Add</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     );
