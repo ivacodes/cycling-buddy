@@ -48,75 +48,85 @@ export default class AllRides extends Component {
     const { sRide, joined } = this.state;
     return (
       <div>
-        {/* is ride joined */}
-        {/* ride joined */}
-        {/* ride not joined */}
-
-        {/* list of all */}
-        <div>
-          {rides.map((ride) => {
-            return (
-              <div
-                key={ride.id}
-                onClick={() => {
-                  this.onSelectRide(ride);
-                }}
-              >
-                <strong>{ride.title}</strong>
-                <br />
-                <em>{ride.description}</em>
-              </div>
-            );
-          })}
+        <div className="row">
+          {/* is ride joined */}
+          {/* ride joined */}
+          {/* ride not joined */}
+          <br />
         </div>
-        {/* clicked ride */}
-        <div>
-          {joined === 1 ? (
-            <div>You joined a ride, join another one? </div>
-          ) : (
-            <div>
-              {sRide != null ? (
-                <div>
-                  <div>{sRide.title}</div>
-                  <div>
-                    <p>{sRide.description}</p>
-                  </div>
-                  <div>
-                    <span>Where: </span>
-                    {sRide.startpoint}
-                  </div>
-                  <div>
-                    <span>When: </span>
-                    {sRide.startdate}
-                  </div>
-                  <div>
-                    <span>Length: </span>
-                    {sRide.lengthinkm} km
-                  </div>
-                  <div>
-                    <span>Difficulty: </span>
-                    {sRide.difficulty}
-                  </div>
-                  <div>
-                    <span>Terrain type: </span>
-                    {sRide.terraintype}
-                  </div>
-                  <div>
-                    {usersRides.filter((e) => e.ride_id === sRide.id).length >
-                    0 ? (
-                      <button disabled>Joined</button>
-                    ) : (
-                      <button onClick={(e) => this.joinRide(e, sRide.id)}>
-                        Join
-                      </button>
-                    )}
-                  </div>
+        <div className="row">
+          {/* list of all */}
+          <div className="col-6">
+            {/* <p className="text-muted">Click to see details</p> */}
+            {rides.map((ride) => {
+              return (
+                <div
+                  key={ride.id}
+                  onClick={() => {
+                    this.onSelectRide(ride);
+                  }}
+                  className="text-info mb-3"
+                >
+                  <strong className="h5">{ride.title}</strong>
+                  <br />
+                  <span className="text-muted">{ride.startdate}</span>
+                  <br />
+                  <span className="text-muted">{ride.startpoint}</span>
                 </div>
-              ) : (
-                <div>not clicked - insert placeholder image here</div>
-              )}
-            </div>
-          )}
+              );
+            })}
+          </div>
+          {/* clicked ride */}
+          <div>
+            {joined === 1 ? (
+              <div>You joined a ride, join another one? </div>
+            ) : (
+              <div>
+                {sRide != null ? (
+                  <div>
+                    <div>{sRide.title}</div>
+                    <div>
+                      <p>{sRide.description}</p>
+                    </div>
+                    <div>
+                      <span>Where: </span>
+                      {sRide.startpoint}
+                    </div>
+                    <div>
+                      <span>When: </span>
+                      {sRide.startdate}
+                    </div>
+                    <div>
+                      <span>Length: </span>
+                      {sRide.lengthinkm} km
+                    </div>
+                    <div>
+                      <span>Difficulty: </span>
+                      {sRide.difficulty}
+                    </div>
+                    <div>
+                      <span>Terrain type: </span>
+                      {sRide.terraintype}
+                    </div>
+                    <div>
+                      {usersRides.filter((e) => e.ride_id === sRide.id).length >
+                      0 ? (
+                        <button disabled>Joined</button>
+                      ) : (
+                        <button onClick={(e) => this.joinRide(e, sRide.id)}>
+                          Join
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="col-6">
+                    not clicked - insert placeholder image here
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
