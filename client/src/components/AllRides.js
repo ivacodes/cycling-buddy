@@ -76,8 +76,8 @@ export default class AllRides extends Component {
               );
             })}
           </div>
-          {/* clicked ride */}
-          <div>
+          {/* clicked ride - details*/}
+          <div className="col">
             {joined === 1 ? (
               <div>You joined a ride, join another one? </div>
             ) : (
@@ -120,9 +120,7 @@ export default class AllRides extends Component {
                     </div>
                   </div>
                 ) : (
-                  <div className="col-6">
-                    not clicked - insert placeholder image here
-                  </div>
+                  <div>not clicked - insert placeholder image here</div>
                 )}
               </div>
             )}
