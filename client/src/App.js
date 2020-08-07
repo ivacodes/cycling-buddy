@@ -12,6 +12,7 @@ class App extends React.Component {
       user: 1,
       rides: [],
       usersRides: [],
+      showComponent: "all",
     };
   }
 
@@ -113,6 +114,13 @@ class App extends React.Component {
       console.log(err);
     }
   };
+  navigateTo(e) {
+    e.preventDefault();
+    // console.log(e.target.value);
+    this.setState({
+      showComponent: e.target.value,
+    });
+  }
 
   componentDidMount = async () => {
     // populate rides state
@@ -144,27 +152,130 @@ class App extends React.Component {
   };
 
   render() {
-    const { user, rides, usersRides } = this.state;
+    const { user, rides, usersRides, showComponent } = this.state;
     return (
       <div className="App">
-        Main app
-        <div>
-          <MyRides
-            user={user}
-            usersRides={usersRides}
-            userDeleted={(ride) => this.userDeleted(ride)}
-          />
-          <CreateRide
-            user={user}
-            rides={rides}
-            addNewRide={(newRide) => this.addNewRide(newRide)}
-          />
-          <AllRides
-            user={user}
-            rides={rides}
-            usersRides={usersRides}
-            refreshUsersRides={this.refreshUsersRides}
-          />
+        <div className="container">
+          <div className="row">
+            <div className="col bg-light rounded mt-2 text-center">
+              <h1 className="display-2 ml-5 mt-5 mr-5 blue-text">
+                <i className="fas fa-biking"></i>
+                <i className="fas fa-biking ml-2"></i>
+                <i className="fas fa-biking oddRider ml-2"></i>
+                <i className="fas fa-biking ml-2"></i>{" "}
+                <span> Cycling Buddy </span>
+              </h1>
+              <br />
+              <p className="lead font-italic mb-5 mt-3 blue-text">
+                Don't want to go alone? Bring a buddy!
+              </p>
+            </div>
+          </div>
+          <div className="row sticky-top mt-n2 mb-2">
+            <div className="col bg-light rounded">
+              <nav className="navbar justify-content">
+                <button
+                  value="all"
+                  onClick={(e) => {
+                    this.navigateTo(e);
+                  }}
+                  className={
+                    showComponent === "all"
+                      ? "btn btn-lg btn-info m-2"
+                      : "btn btn-lg btn-outline-info m-2"
+                  }
+                >
+                  Browse all rides
+                </button>
+                <button
+                  value="my"
+                  onClick={(e) => {
+                    this.navigateTo(e);
+                  }}
+                  className={
+                    showComponent === "my"
+                      ? "btn btn-lg btn-info ml-2"
+                      : "btn btn-lg btn-outline-info ml-2"
+                  }
+                >
+                  My rides
+                </button>
+                <button
+                  value="create"
+                  onClick={(e) => {
+                    this.navigateTo(e);
+                  }}
+                  className={
+                    showComponent === "create"
+                      ? "btn btn-lg btn-info ml-3"
+                      : "btn btn-lg btn-outline-info ml-3"
+                  }
+                >
+                  Create a new ride
+                </button>
+              </nav>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col bg-light rounded">
+              {(() => {
+                switch (showComponent) {
+                  case "all":
+                    return (
+                      <AllRides
+                        user={user}
+                        rides={rides}
+                        usersRides={usersRides}
+                        refreshUsersRides={this.refreshUsersRides}
+                      />
+                    );
+                  case "my":
+                    return (
+                      <MyRides
+                        user={user}
+                        usersRides={usersRides}
+                        userDeleted={(ride) => this.userDeleted(ride)}
+                      />
+                    );
+                  case "create":
+                    return (
+                      <CreateRide
+                        user={user}
+                        rides={rides}
+                        addNewRide={(newRide) => this.addNewRide(newRide)}
+                      />
+                    );
+                  default:
+                    return (
+                      <AllRides
+                        user={user}
+                        rides={rides}
+                        usersRides={usersRides}
+                        refreshUsersRides={this.refreshUsersRides}
+                      />
+                    );
+                }
+              })()}
+            </div>
+            {/* <MyRides
+              user={user}
+              usersRides={usersRides}
+              userDeleted={(ride) => this.userDeleted(ride)}
+            /> */}
+            {/* <CreateRide
+              user={user}
+              rides={rides}
+              addNewRide={(newRide) => this.addNewRide(newRide)}
+            /> */}
+            {/* <div>
+                <AllRides
+                  user={user}
+                  rides={rides}
+                  usersRides={usersRides}
+                  refreshUsersRides={this.refreshUsersRides}
+                />
+              </div> */}
+          </div>
         </div>
       </div>
     );

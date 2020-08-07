@@ -1,0 +1,29 @@
+/*override default bootstrap colors + new schtuff*/
+.bg-light {
+  background-color: #c9d6df !important;
+}
+
+.bg-gradient {
+  background: #22c1c3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #fdbb2d,
+    #22c1c3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fdbb2d,
+    #22c1c3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.blue-text {
+  color: #17a2b8;
+}
+
+.oddRider {
+  -webkit-text-stroke: 1px #f6bb31;
+  color: #f6bb31;
+  text-shadow: 3px 3px 0 #17a2b8, -1px -1px 0 #f6bb31, 1px -1px 0 #f6bb31,
+    -1px 1px 0 #f6bb31, 1px 1px 0 #f6bb31;
+}
