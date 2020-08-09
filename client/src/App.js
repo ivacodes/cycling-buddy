@@ -136,6 +136,22 @@ class App extends React.Component {
     });
   }
 
+  formatDate(input) {
+    // takes sql date and makes it browser friendly, default param for local timezone
+    let options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false,
+    };
+    let d = new Date(input);
+    // console.log(new Intl.DateTimeFormat('default', options).format(d));
+    return new Intl.DateTimeFormat("default", options).format(d);
+  }
+
   componentDidMount = async () => {
     // populate rides state
     try {
@@ -241,6 +257,7 @@ class App extends React.Component {
                         rides={rides}
                         usersRides={usersRides}
                         refreshUsersRides={this.refreshUsersRides}
+                        formatDate={(d) => this.formatDate(d)}
                       />
                     );
                   case "my":
@@ -249,6 +266,7 @@ class App extends React.Component {
                         user={user}
                         usersRides={usersRides}
                         userDeleted={(ride) => this.userDeleted(ride)}
+                        formatDate={(d) => this.formatDate(d)}
                       />
                     );
                   case "create":

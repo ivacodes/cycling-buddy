@@ -47,7 +47,9 @@ export default class MyRides extends Component {
                 >
                   <strong className="h5">{ride.title}</strong>
                   <br />
-                  <span className="text-muted">{ride.startdate}</span>
+                  <span className="text-muted">
+                    {this.props.formatDate(ride.startdate)}
+                  </span>
                   <br />
                   <span className="text-muted">{ride.startpoint}</span>
                 </div>
@@ -67,7 +69,7 @@ export default class MyRides extends Component {
                 </div>
                 <div>
                   <span>When: </span>
-                  {myRideDetails.startdate}
+                  {this.props.formatDate(myRideDetails.startdate)}
                 </div>
                 <div>
                   <span>Length: </span>

@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+const options = {
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+};
+
 export default class AllRides extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +75,9 @@ export default class AllRides extends Component {
                 >
                   <strong className="h5">{ride.title}</strong>
                   <br />
-                  <span className="text-muted">{ride.startdate}</span>
+                  <span className="text-muted">
+                    {this.props.formatDate(ride.startdate)}
+                  </span>
                   <br />
                   <span className="text-muted">{ride.startpoint}</span>
                 </div>
@@ -96,7 +104,7 @@ export default class AllRides extends Component {
                     </div>
                     <div>
                       <span className="text-muted">When: </span>
-                      {sRide.startdate}
+                      {this.props.formatDate(sRide.startdate)}
                     </div>
                     <div>
                       <span className="text-muted">Length: </span>
