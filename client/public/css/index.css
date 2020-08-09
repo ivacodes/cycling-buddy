@@ -7,12 +7,12 @@
   background: #17a2b8; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
-    #a4cbd7,
-    #17a2b8
+    #f6bb31,
+    #f6bb31
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to left,
-    #a4cbd7,
+    #f6bb31,
     #17a2b8
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -26,4 +26,8 @@
   color: #f6bb31;
   text-shadow: 3px 3px 0 #17a2b8, -1px -1px 0 #f6bb31, 1px -1px 0 #f6bb31,
     -1px 1px 0 #f6bb31, 1px 1px 0 #f6bb31;
+}
+
+.scrollableCol {
+  overflow-y: scroll;
 }

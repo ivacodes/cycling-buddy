@@ -58,12 +58,15 @@ export default class createRide extends Component {
         <div className="row">
           <br />
         </div>
-        <div className="row">
+        <div className="row text-info">
           <div className="col">
             {rideCreated ? (
               <div>
                 Ride created, create another one?{" "}
-                <button onClick={(e) => this.props.createAnother(e)}>
+                <button
+                  onClick={(e) => this.props.createAnother(e)}
+                  className="btn btn-outline-info mt-3"
+                >
                   Yes
                 </button>
               </div>
@@ -81,7 +84,7 @@ export default class createRide extends Component {
                       value={title}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></input>
                     Starting date and time
                     <input
@@ -90,7 +93,7 @@ export default class createRide extends Component {
                       value={startdate}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></input>
                     Start address{" "}
                     <input
@@ -99,7 +102,7 @@ export default class createRide extends Component {
                       value={startpoint}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></input>
                     Terrain type
                     <input
@@ -108,7 +111,7 @@ export default class createRide extends Component {
                       value={terraintype}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></input>
                     Length (km)
                     <input
@@ -117,7 +120,7 @@ export default class createRide extends Component {
                       value={lengthinkm}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></input>
                     Difficulty
                     <input
@@ -126,7 +129,7 @@ export default class createRide extends Component {
                       value={difficulty}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></input>
                   </div>
                   <div className="col-6">
@@ -137,13 +140,15 @@ export default class createRide extends Component {
                       value={description}
                       onChange={(e) => this.handleInputChange(e)}
                       required
-                      className="form-control"
+                      className="form-control mb-1"
                     ></textarea>
                     <p className="text-muted">*All fields are mandatory</p>
                   </div>
                 </div>
 
-                <button type="submit">Add</button>
+                <button type="submit" className="btn btn-outline-info mt-3">
+                  Add
+                </button>
               </form>
             )}
           </div>

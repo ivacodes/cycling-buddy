@@ -85,6 +85,7 @@ router.post("/usersrides", rideExists, userExists, async (req, res) => {
 router.put("/rides", rideExists, userExists, async (req, res) => {
   const { user_id, ride_id } = req.body;
   try {
+    console.log("in the put in rides");
     await db(
       `update rides set iscompleted=1 where id=${ride_id} and createdby=${user_id}`
     );

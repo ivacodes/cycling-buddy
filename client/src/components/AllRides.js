@@ -57,7 +57,7 @@ export default class AllRides extends Component {
         <div className="row">
           {/* list of all */}
           <div className="col-6">
-            {/* <p className="text-muted">Click to see details</p> */}
+            {/* this col should be scrolablle */}
             {rides.map((ride) => {
               return (
                 <div
@@ -77,50 +77,66 @@ export default class AllRides extends Component {
             })}
           </div>
           {/* clicked ride - details*/}
-          <div className="col">
+          <div className="col ">
             {joined === 1 ? (
-              <div>You joined a ride, join another one? </div>
+              <div className="text-info">
+                You joined a ride, join another one?{" "}
+              </div>
             ) : (
               <div>
                 {sRide != null ? (
-                  <div>
-                    <div>{sRide.title}</div>
+                  <div className="text-info mb-3">
+                    <div className="h5">{sRide.title}</div>
                     <div>
-                      <p>{sRide.description}</p>
+                      <p className="text-muted">{sRide.description}</p>
                     </div>
                     <div>
-                      <span>Where: </span>
+                      <span className="text-muted">Where: </span>
                       {sRide.startpoint}
                     </div>
                     <div>
-                      <span>When: </span>
+                      <span className="text-muted">When: </span>
                       {sRide.startdate}
                     </div>
                     <div>
-                      <span>Length: </span>
+                      <span className="text-muted">Length: </span>
                       {sRide.lengthinkm} km
                     </div>
                     <div>
-                      <span>Difficulty: </span>
+                      <span className="text-muted">Difficulty: </span>
                       {sRide.difficulty}
                     </div>
                     <div>
-                      <span>Terrain type: </span>
+                      <span className="text-muted">Terrain type: </span>
                       {sRide.terraintype}
                     </div>
                     <div>
                       {usersRides.filter((e) => e.ride_id === sRide.id).length >
                       0 ? (
-                        <button disabled>Joined</button>
+                        <button
+                          disabled
+                          className="btn btn-outline-secondary mt-3"
+                        >
+                          Joined
+                        </button>
                       ) : (
-                        <button onClick={(e) => this.joinRide(e, sRide.id)}>
+                        <button
+                          onClick={(e) => this.joinRide(e, sRide.id)}
+                          className="btn btn-outline-info mt-3"
+                        >
                           Join
                         </button>
                       )}
                     </div>
                   </div>
                 ) : (
-                  <div>not clicked - insert placeholder image here</div>
+                  <div className="text-info">
+                    <i className="fas fa-arrow-left"></i>
+                    <br />
+                    <i className="fas fa-arrow-left"></i>
+                    <span className="ml-4 h3">Select a ride</span> <br />
+                    <i className="fas fa-arrow-left"></i>
+                  </div>
                 )}
               </div>
             )}

@@ -85,6 +85,7 @@ export default class MyRides extends Component {
                   onClick={(e) => {
                     this.deleteButtonPressed(e);
                   }}
+                  className="btn btn-outline-info mt-3"
                 >
                   Remove
                 </button>
