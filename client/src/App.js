@@ -13,6 +13,7 @@ class App extends React.Component {
       rides: [],
       usersRides: [],
       showComponent: "all",
+      rideCreated: 0,
     };
   }
 
@@ -36,6 +37,9 @@ class App extends React.Component {
     } catch (err) {
       console.log(err);
     }
+    this.setState({
+      rideCreated: 1,
+    });
   };
 
   userDeleted = async (ride) => {
@@ -119,6 +123,14 @@ class App extends React.Component {
     // console.log(e.target.value);
     this.setState({
       showComponent: e.target.value,
+      rideCreated: 0,
+    });
+  }
+
+  createAnother(e) {
+    e.preventDefault();
+    this.setState({
+      rideCreated: 0,
     });
   }
 
@@ -152,7 +164,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { user, rides, usersRides, showComponent } = this.state;
+    const { user, rides, usersRides, showComponent, rideCreated } = this.state;
     return (
       <div className="App">
         <div className="container">
@@ -243,6 +255,8 @@ class App extends React.Component {
                         user={user}
                         rides={rides}
                         addNewRide={(newRide) => this.addNewRide(newRide)}
+                        rideCreated={rideCreated}
+                        createAnother={(e) => this.createAnother(e)}
                       />
                     );
                   default:
