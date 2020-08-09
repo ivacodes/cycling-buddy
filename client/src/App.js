@@ -17,8 +17,19 @@ class App extends React.Component {
     };
   }
 
+  stringParse = (text) => {
+    // prettier-ignore
+    // swap single quote for 2 single quotes because SQL
+    return text.replace(/'/g, "''");
+  };
+
   addNewRide = async (newRide) => {
     console.log("adding new ride");
+
+    let parsedDesc = this.stringParse(newRide.description);
+    console.log(parsedDesc);
+    newRide.description = parsedDesc;
+
     console.log(JSON.stringify(newRide));
 
     try {
@@ -29,7 +40,6 @@ class App extends React.Component {
         },
         body: JSON.stringify(newRide),
       });
-      // this.clearInputField(); // clears the input field after submitting
       const rides = await result.json();
       this.setState({
         rides: rides,
