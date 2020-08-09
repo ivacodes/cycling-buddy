@@ -192,8 +192,8 @@ class App extends React.Component {
                 <i className="fas fa-biking"></i>
                 <i className="fas fa-biking ml-2"></i>
                 <i className="fas fa-biking oddRider ml-2"></i>
-                <i className="fas fa-biking ml-2"></i>{" "}
-                <span> Cycling Buddy </span>
+                <i className="fas fa-biking ml-2"></i> <span> Cycling</span>
+                <span className="oddRider"> Buddy </span>
               </h1>
               <br />
               <p className="lead font-italic mb-5 mt-3 blue-text">

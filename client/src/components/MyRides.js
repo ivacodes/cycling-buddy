@@ -35,7 +35,7 @@ export default class MyRides extends Component {
           <br />
         </div>
         <div className="row">
-          <div className="col-6">
+          <div className="col-6 ml-4">
             {usersRides.map((ride) => {
               return (
                 <div
@@ -56,31 +56,31 @@ export default class MyRides extends Component {
               );
             })}
           </div>
-          <div className="col-6">
+          <div className="col">
             {myRideDetails != null ? (
-              <div>
-                <div>{myRideDetails.title}</div>
+              <div className="text-info mb-3">
+                <div className="h5">{myRideDetails.title}</div>
                 <div>
-                  <p>{myRideDetails.description}</p>
+                  <p className="text-muted">{myRideDetails.description}</p>
                 </div>
                 <div>
-                  <span>Where: </span>
+                  <span className="text-muted">Where: </span>
                   {myRideDetails.startpoint}
                 </div>
                 <div>
-                  <span>When: </span>
+                  <span className="text-muted">When: </span>
                   {this.props.formatDate(myRideDetails.startdate)}
                 </div>
                 <div>
-                  <span>Length: </span>
+                  <span className="text-muted">Length: </span>
                   {myRideDetails.lengthinkm} km
                 </div>
                 <div>
-                  <span>Difficulty: </span>
+                  <span className="text-muted">Difficulty: </span>
                   {myRideDetails.difficulty}
                 </div>
                 <div>
-                  <span>Terrain type: </span>
+                  <span className="text-muted">Terrain type: </span>
                   {myRideDetails.terraintype}
                 </div>
                 <button

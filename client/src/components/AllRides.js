@@ -62,7 +62,7 @@ export default class AllRides extends Component {
         </div>
         <div className="row">
           {/* list of all */}
-          <div className="col-6">
+          <div className="col-6 ml-4">
             {/* this col should be scrolablle */}
             {rides.map((ride) => {
               return (
@@ -139,7 +139,6 @@ export default class AllRides extends Component {
                   </div>
                 ) : (
                   <div className="text-info">
-                    <i className="fas fa-arrow-left"></i>
                     <br />
                     <i className="fas fa-arrow-left"></i>
                     <span className="ml-4 h3">Select a ride</span> <br />

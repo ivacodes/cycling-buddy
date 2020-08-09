@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 
+let d = new Date();
+let month = "" + (d.getMonth() + 1);
+let day = "" + (d.getDate() + 1);
+let year = d.getFullYear();
+
+if (month.length < 2) month = "0" + month;
+if (day.length < 2) day = "0" + day;
+
+let strDate = `${year}-${month}-${day}T00:01`;
+
 export default class createRide extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +71,7 @@ export default class createRide extends Component {
         <div className="row text-info">
           <div className="col">
             {rideCreated ? (
-              <div>
+              <div className="mb-3">
                 Ride created, create another one?{" "}
                 <button
                   onClick={(e) => this.props.createAnother(e)}
@@ -73,7 +83,7 @@ export default class createRide extends Component {
             ) : (
               <form
                 onSubmit={(event) => this.handleSubmit(event)}
-                className="mb-4"
+                className="mb-4 ml-4 mr-4"
               >
                 <div className="form-group row">
                   <div className="col">
@@ -94,6 +104,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      min={strDate}
                     ></input>
                     Start address{" "}
                     <input
