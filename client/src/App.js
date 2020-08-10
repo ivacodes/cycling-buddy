@@ -50,6 +50,21 @@ class App extends React.Component {
     this.setState({
       rideCreated: 1,
     });
+    //get back updated users rides
+    try {
+      const resU = await fetch(`/api/usersrides/${this.state.user}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const usersRides = await resU.json();
+      this.setState({
+        usersRides: usersRides,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   userDeleted = async (ride) => {
@@ -288,6 +303,7 @@ class App extends React.Component {
                         createAnother={(e) => this.createAnother(e)}
                       />
                     );
+
                   default:
                     return (
                       <AllRides
