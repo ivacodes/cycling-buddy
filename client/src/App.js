@@ -60,7 +60,7 @@ class App extends React.Component {
     };
     if (user === ride.createdby) {
       // ride created by user - sets iscompleted flag to 1, get back list of rides and usersrides
-      console.log("ride created by user");
+      // console.log("ride created by user");
       try {
         const result = await fetch("/api/rides", {
           method: "PUT",
@@ -73,7 +73,7 @@ class App extends React.Component {
         this.setState({
           rides: rides,
         });
-        console.log("in the try");
+        // console.log("in the try");
       } catch (err) {
         console.log(err);
       }
@@ -109,7 +109,7 @@ class App extends React.Component {
       } catch (err) {
         console.log(err);
       }
-      console.log("ride not created by user");
+      // console.log("ride not created by user");
     }
   };
 

@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 
-const options = {
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-};
-
 export default class AllRides extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +56,7 @@ export default class AllRides extends Component {
         </div>
         <div className="row">
           {/* list of all */}
-          <div className="col-6 ml-4">
+          <div className="col-6 ml-4 scrollableCol setHeight">
             {/* this col should be scrolablle */}
             {rides.map((ride) => {
               return (
@@ -85,7 +79,7 @@ export default class AllRides extends Component {
             })}
           </div>
           {/* clicked ride - details*/}
-          <div className="col ">
+          <div className="col">
             {joined === 1 ? (
               <div className="text-info">
                 You joined a ride, join another one?{" "}

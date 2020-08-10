@@ -35,7 +35,7 @@ export default class MyRides extends Component {
           <br />
         </div>
         <div className="row">
-          <div className="col-6 ml-4">
+          <div className="col-6 ml-4 scrollableCol setHeight">
             {usersRides.map((ride) => {
               return (
                 <div

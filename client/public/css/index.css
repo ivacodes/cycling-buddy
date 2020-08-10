@@ -1,7 +1,7 @@
 /*override default bootstrap colors + new schtuff*/
-.bg-light {
+/* .bg-light {
   background-color: #c9d6df !important;
-}
+} */
 
 .bg-gradient {
   background: #17a2b8; /* fallback for old browsers */
@@ -35,4 +35,23 @@
 
 .scrollableCol {
   overflow-y: scroll;
+}
+
+.setHeight {
+  height: 34em;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(200, 200, 200, 1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 0 6px rgba(90, 90, 90, 0.7);
 }

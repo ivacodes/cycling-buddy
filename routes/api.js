@@ -61,6 +61,7 @@ router.get("/usersrides/:user_id", userExistsParams, async (req, res) => {
     const results = await db(
       `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id, createdby from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
     );
+    // if (!results.data.length) return res.send({});
     res.send(results.data);
   } catch (err) {
     res.status(500).send(err);
@@ -80,17 +81,19 @@ router.post("/usersrides", rideExists, userExists, async (req, res) => {
   }
 });
 
-/*remove from rides (iscompleted=1) when user is creator, get updated list back*/
+/*remove from rides (iscompleted=1) when user is creator, get updated list of all rides back*/
 router.put("/rides", rideExists, userExists, async (req, res) => {
   const { user_id, ride_id } = req.body;
   try {
-    console.log("in the put in rides");
-    await db(
+    // console.log("in the put in rides");
+    const res1 = await db(
       `update rides set iscompleted=1 where id=${ride_id} and createdby=${user_id}`
     );
-    const results = await db(
-      `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
-    );
+    // // let answer = await res1.json();
+    // console.log(res1);
+    //get updated list of all rides back
+    const results = selectAllRides();
+    // console.log(results);
     res.send(results.data);
   } catch (err) {
     res.status(500).send(err);
@@ -107,6 +110,8 @@ router.delete("/usersrides", rideExists, userExists, async (req, res) => {
     const results = await db(
       `select distinct title, description, startdate, startpoint, terraintype, difficulty, lengthinkm, iscompleted, rides.id as ride_id from users_rides inner join users on users_rides.user_id=users.id inner join rides on users_rides.ride_id=rides.id where users.id='${user_id}' and rides.iscompleted=0;`
     );
+    console.log(results);
+
     res.send(results.data);
   } catch (err) {
     res.status(500).send(err);

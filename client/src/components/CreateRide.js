@@ -96,6 +96,7 @@ export default class createRide extends Component {
                       required
                       className="form-control mb-1"
                       maxLength="45"
+                      pattern="[a-zA-Z0-9 ]+"
                     ></input>
                     Starting date and time
                     <input
@@ -116,6 +117,7 @@ export default class createRide extends Component {
                       required
                       className="form-control mb-1"
                       maxLength="254"
+                      pattern="[a-zA-Z0-9 ]+"
                     ></input>
                     Terrain type
                     <input
@@ -126,6 +128,7 @@ export default class createRide extends Component {
                       required
                       className="form-control mb-1"
                       maxLength="254"
+                      pattern="[a-zA-Z0-9 ]+"
                     ></input>
                     Length (km)
                     <input
@@ -146,6 +149,7 @@ export default class createRide extends Component {
                       required
                       className="form-control mb-1"
                       maxLength="254"
+                      pattern="[a-zA-Z0-9 ]+"
                     ></input>
                   </div>
                   <div className="col-6">
