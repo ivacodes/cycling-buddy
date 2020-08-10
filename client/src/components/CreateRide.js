@@ -95,6 +95,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      maxLength="45"
                     ></input>
                     Starting date and time
                     <input
@@ -114,6 +115,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      maxLength="254"
                     ></input>
                     Terrain type
                     <input
@@ -123,6 +125,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      maxLength="254"
                     ></input>
                     Length (km)
                     <input
@@ -132,6 +135,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      max="1000"
                     ></input>
                     Difficulty
                     <input
@@ -141,6 +145,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      maxLength="254"
                     ></input>
                   </div>
                   <div className="col-6">
@@ -152,6 +157,7 @@ export default class createRide extends Component {
                       onChange={(e) => this.handleInputChange(e)}
                       required
                       className="form-control mb-1"
+                      maxLength="1999"
                     ></textarea>
                     <p className="text-muted">*All fields are mandatory</p>
                   </div>

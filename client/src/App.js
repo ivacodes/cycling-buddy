@@ -60,10 +60,9 @@ class App extends React.Component {
     };
     if (user === ride.createdby) {
       // ride created by user - sets iscompleted flag to 1, get back list of rides and usersrides
-      console.log("ride created by user"); //reaches here
+      console.log("ride created by user");
       try {
         const result = await fetch("/api/rides", {
-          // this is problematic
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

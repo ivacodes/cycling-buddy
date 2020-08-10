@@ -33,7 +33,6 @@ router.get("/rides", async (req, res) => {
 
 /* POST new ride and get back refreshed list of rides*/
 router.post("/rides", userExistsRideCreation, async (req, res) => {
-  // add way to escape quotes in strings - send \\' instead, json likes it
   const {
     startdate,
     startpoint,
@@ -139,8 +138,5 @@ router.post("/users", async (req, res) => {
     res.status(400).send({ msg: "send some body" });
   }
 });
-
-/* OPTIONAL - implement later maybe 
-when deleting/completing a ride set iscompleted=0*/
 
 module.exports = router;
