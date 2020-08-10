@@ -10,7 +10,7 @@ export default class AllRides extends Component {
   }
 
   onSelectRide(ride) {
-    console.log(ride.id);
+    // console.log(ride.id);
     this.setState({
       sRide: ride,
       joined: null,
@@ -24,7 +24,7 @@ export default class AllRides extends Component {
       user_id: this.props.user,
       ride_id: id,
     };
-    console.log("joining ride", id);
+    // console.log("joining ride", id);
     try {
       await fetch("/api/usersrides", {
         method: "POST",

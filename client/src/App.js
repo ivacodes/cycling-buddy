@@ -24,13 +24,13 @@ class App extends React.Component {
   };
 
   addNewRide = async (newRide) => {
-    console.log("adding new ride");
+    // console.log("adding new ride");
 
     let parsedDesc = this.stringParse(newRide.description);
-    console.log(parsedDesc);
+    // console.log(parsedDesc);
     newRide.description = parsedDesc;
 
-    console.log(JSON.stringify(newRide));
+    // console.log(JSON.stringify(newRide));
 
     try {
       const result = await fetch("/api/rides", {
@@ -75,7 +75,7 @@ class App extends React.Component {
     };
     if (user === ride.createdby) {
       // ride created by user - sets iscompleted flag to 1, get back list of rides and usersrides
-      // console.log("ride created by user");
+      console.log("ride created by user");
       try {
         const result = await fetch("/api/rides", {
           method: "PUT",

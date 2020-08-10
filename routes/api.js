@@ -92,7 +92,7 @@ router.put("/rides", rideExists, userExists, async (req, res) => {
     // // let answer = await res1.json();
     // console.log(res1);
     //get updated list of all rides back
-    const results = selectAllRides();
+    const results = await selectAllRides();
     // console.log(results);
     res.send(results.data);
   } catch (err) {

@@ -9,7 +9,7 @@ export default class MyRides extends Component {
   }
 
   onSelectRide(ride) {
-    console.log(ride.ride_id);
+    // console.log(ride.ride_id);
     this.setState({
       myRideDetails: ride,
     });
