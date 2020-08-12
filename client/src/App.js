@@ -18,8 +18,8 @@ class App extends React.Component {
   }
 
   stringParse = (text) => {
-    // prettier-ignore
     // swap single quote for 2 single quotes because SQL
+    // prettier-ignore
     return text.replace(/'/g, "''");
   };
 

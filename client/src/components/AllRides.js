@@ -113,6 +113,7 @@ export default class AllRides extends Component {
                       {sRide.terraintype}
                     </div>
                     <div>
+                      {/* did user already join? */}
                       {usersRides.filter((e) => e.ride_id === sRide.id).length >
                       0 ? (
                         <button

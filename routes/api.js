@@ -118,6 +118,7 @@ router.delete("/usersrides", rideExists, userExists, async (req, res) => {
   }
 });
 
+/*routes below are not used*/
 /* GET list of users */
 router.get("/users", async (req, res) => {
   try {
